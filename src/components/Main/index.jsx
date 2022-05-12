@@ -1,5 +1,5 @@
-import { Headline } from "./Headline.jsx";
-import { Links } from "./Links.jsx";
+import { Headline } from "../Headline/index.jsx";
+import { Links } from "../Links/index.jsx";
 import MainStyles from "./Main.module.css";
 
 export function Main(props) {
