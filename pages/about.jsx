@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import {Footer} from '../components/Footer.js'
-import {Main} from '../components/Main.js'
-import {Header} from '../components/Header.js'
+import {Footer} from '../components/Footer.jsx'
+import {Main} from '../components/Main.jsx'
+import {Header} from '../components/Header.jsx'
 
 export default function Home() {
   return (
