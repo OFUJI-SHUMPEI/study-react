@@ -1,7 +1,6 @@
 import { Headline } from "../Headline/index.jsx";
 import { Links } from "../Links/index.jsx";
 import MainStyles from "./Main.module.css";
-import { useEffect } from "react";
 
 export function Main(props) {
   return (
