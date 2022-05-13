@@ -3,52 +3,14 @@ import styles from "../src/styles/Home.module.css";
 import { Footer } from "../src/components/Footer/index.jsx";
 import { Main } from "../src/components/Main/index.jsx";
 import { Header } from "../src/components/Header/index.jsx";
-import { useEffect, useState, useCallback } from "react";
+import { useCounter } from "../src/hooks/useCounter";
+import { useInputarray } from "../src/hooks/useInputarray";
+import { useBgLightBlue } from "../src/hooks/useBgLightBlue";
 
 export default function Home() {
-  const [count, setCount] = useState(1);
-  const [text, setText] = useState("");
-  const [isShow, setisShow] = useState(true);
-  const [array, setArray] = useState([1.2]);
-
-  const handleClick = useCallback(
-    (e) => {
-      if (count < 10) {
-        setCount((prevcount) => prevcount + 1);
-      }
-    },
-    [count]
-  );
-
-  const handleDisplay = () => {
-    setisShow((previsShow) => !previsShow);
-  };
-
-  const handleChange = useCallback((e) => {
-    if (e.target.value.length >= 5) {
-      alert("5文字以下にしてください");
-      return;
-    }
-    setText(e.target.value);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.backgroundColor = "lightblue";
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
-  }, []);
-
-  const handleAdd = useCallback(() => {
-    return setArray((prevarray) => {
-      if (prevarray.some((item) => item === text)) {
-        alert("同じアイテムが含まれています");
-        return prevarray;
-      }
-
-      return [...prevarray, text];
-    });
-  }, [text]);
+  const { count, isShow, handleClick, handleDisplay } = useCounter();
+  const { text, array, handleChange, handleAdd } = useInputarray();
+  useBgLightBlue();
 
   return (
     <div className={styles.container}>
@@ -58,6 +20,7 @@ export default function Home() {
       {isShow ? <h1>{count}</h1> : null}
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>非表示</button>
+
       <input type="text" value={text} onChange={handleChange} />
       <button onClick={handleAdd}>追加</button>
       <ul>
