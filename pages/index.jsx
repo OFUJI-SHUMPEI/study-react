@@ -9,6 +9,7 @@ export default function Home() {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setisShow] = useState(true);
+  const [array, setArray] = useState([1.2]);
 
   const handleClick = useCallback(
     (e) => {
@@ -38,6 +39,17 @@ export default function Home() {
     };
   }, []);
 
+  const handleAdd = useCallback(() => {
+    return setArray((prevarray) => {
+      if (prevarray.some((item) => item === text)) {
+        alert("同じアイテムが含まれています");
+        return prevarray;
+      }
+
+      return [...prevarray, text];
+    });
+  }, [text]);
+
   return (
     <div className={styles.container}>
       <Head></Head>
@@ -47,6 +59,12 @@ export default function Home() {
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>非表示</button>
       <input type="text" value={text} onChange={handleChange} />
+      <button onClick={handleAdd}>追加</button>
+      <ul>
+        {array.map((item) => {
+          return <li key={item}>{item}</li>;
+        })}
+      </ul>
       <Main page="index" />
 
       <Footer />
