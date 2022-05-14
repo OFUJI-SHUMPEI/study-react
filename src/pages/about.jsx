@@ -5,7 +5,6 @@ import { Main } from "../components/Main/index.jsx";
 import { Header } from "../components/Header/index.jsx";
 
 export default function About({
-  count,
   isShow,
   handleClick,
   handleDisplay,
@@ -13,12 +12,13 @@ export default function About({
   array,
   handleChange,
   handleAdd,
+  doubleCount,
 }) {
   return (
     <div className={styles.container}>
       <Head></Head>
       <Header />
-      {isShow ? <h1>{count}</h1> : null}
+      {isShow ? <h1>{doubleCount}</h1> : null}
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>非表示</button>
       <input type="text" value={text} onChange={handleChange} />
