@@ -4,7 +4,7 @@ import { Footer } from "../components/Footer/index.jsx";
 import { Main } from "../components/Main/index.jsx";
 import { Header } from "../components/Header/index.jsx";
 
-export default function Home({
+const Home = ({
   count,
   isShow,
   handleClick,
@@ -13,7 +13,7 @@ export default function Home({
   array,
   handleChange,
   handleAdd,
-}) {
+}) => {
   return (
     <div className={styles.container}>
       <Head></Head>
@@ -35,4 +35,5 @@ export default function Home({
       <Footer />
     </div>
   );
-}
+};
+export default Home;

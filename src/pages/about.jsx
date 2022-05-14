@@ -4,7 +4,7 @@ import { Footer } from "../components/Footer/index.jsx";
 import { Main } from "../components/Main/index.jsx";
 import { Header } from "../components/Header/index.jsx";
 
-export default function About({
+const About = ({
   isShow,
   handleClick,
   handleDisplay,
@@ -13,7 +13,7 @@ export default function About({
   handleChange,
   handleAdd,
   doubleCount,
-}) {
+}) => {
   return (
     <div className={styles.container}>
       <Head></Head>
@@ -33,4 +33,5 @@ export default function About({
       <Footer />
     </div>
   );
-}
+};
+export default About;

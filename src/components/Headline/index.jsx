@@ -1,15 +1,13 @@
+import HeadlineStyles from "./Headline.module.css";
 
-import HeadlineStyles from './Headline.module.css'
+export const Headline = (props) => {
+  return (
+    <div>
+      <h1 className={HeadlineStyles.title}>{props.page} page </h1>
 
-export function Headline(props) {
-    return (
-        <div>
-            <h1 className={HeadlineStyles.title}>{props.page} page </h1>
-
-            <p className={HeadlineStyles.description}>
-                Get started by editing {props.children}
-            </p>
-        
-        </div>
-    );
-}
+      <p className={HeadlineStyles.description}>
+        Get started by editing {props.children}
+      </p>
+    </div>
+  );
+};

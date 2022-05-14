@@ -13,7 +13,7 @@ export const useInputarray = () => {
 
   const handleAdd = useCallback(() => {
     return setArray((prevarray) => {
-      if (prevarray.some((item) => item === text)) {
+      if (prevarray.includes(text)) {
         alert("同じアイテムが含まれています");
         return prevarray;
       }
