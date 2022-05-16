@@ -1,19 +1,6 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { Posts } from "../components/Posts/index.jsx";
-import { Header } from "../components/Header/index.jsx";
 import { useCallback, useEffect, useState } from "react";
 
-const Home = ({
-  count,
-  isShow,
-  handleClick,
-  handleDisplay,
-  text,
-  array,
-  handleChange,
-  handleAdd,
-}) => {
+export const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(undefined);
@@ -37,13 +24,22 @@ const Home = ({
     getPosts();
   }, [getPosts]);
 
-  return (
-    <div className={styles.container}>
-      <Head></Head>
-      <Header />
+  if (loading) {
+    return <div>ロード中です。</div>;
+  }
 
-      <Posts />
-    </div>
+  if (error) {
+    return <div>{error.message}</div>;
+  }
+  if (posts.length === 0) {
+    return <div>データは空です。</div>;
+  }
+
+  return (
+    <ol>
+      {posts.map((post) => {
+        return <li key={post.id}>{post.title}</li>;
+      })}
+    </ol>
   );
 };
-export default Home;
