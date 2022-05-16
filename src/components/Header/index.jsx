@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <header className={HeaderStyles.header}>
       {NAV_ITEMS.map((items) => (
-        <Link href={items.href}>
+        <Link key={items.href} href={items.href}>
           <a className={HeaderStyles.anchor}>{items.label}</a>
         </Link>
       ))}
