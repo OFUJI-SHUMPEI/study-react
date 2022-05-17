@@ -1,14 +1,12 @@
 import Head from "next/head";
-import styles from "../../styles/Home.module.css";
-import { useRouter } from "next/router";
+import styles from "../../../styles/Home.module.css";
+import { Post } from "../../../components/Post/index.jsx";
 
 const postid = ({}) => {
-  const router = useRouter();
-
   return (
     <div className={styles.container}>
       <Head></Head>
-      <div>{router.query.id}</div>
+      <Post />
     </div>
   );
 };

@@ -4,16 +4,7 @@ import { Posts } from "../components/Posts/index.jsx";
 import { Header } from "../components/Header/index.jsx";
 import { useCallback, useEffect, useState } from "react";
 
-const Home = ({
-  count,
-  isShow,
-  handleClick,
-  handleDisplay,
-  text,
-  array,
-  handleChange,
-  handleAdd,
-}) => {
+const Home = ({}) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(undefined);
