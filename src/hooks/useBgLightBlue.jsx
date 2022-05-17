@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
 
-export function useBgLightBlue() {
+export const useBgLightBlue = () => {
   const router = useRouter();
   console.log(router);
 
@@ -26,4 +26,4 @@ export function useBgLightBlue() {
       document.body.style.backgroundColor = "";
     };
   }, [bgColor]);
-}
+};

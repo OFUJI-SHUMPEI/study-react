@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useReducer } from "react";
 import useSWR from "swr";
+import Link from "next/link";
 
 const fetcher = async (url) => {
   const responce = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -43,7 +43,13 @@ export const Posts = () => {
   return (
     <ol>
       {data.map((post) => {
-        return <li key={post.id}>{post.title}</li>;
+        return (
+          <li key={post.id}>
+            <Link href={`/post/${post.id}`}>
+              <a>{post.title}</a>
+            </Link>
+          </li>
+        );
       })}
     </ol>
   );
