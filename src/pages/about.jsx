@@ -4,7 +4,7 @@ import { Header } from "../components/Header/index.jsx";
 
 const About = ({}) => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Index Page</title>
       </Head>

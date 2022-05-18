@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import { Posts } from "../components/Posts/index.jsx";
 import { Header } from "../components/Header/index.jsx";
 import { useCallback, useEffect, useState } from "react";
@@ -29,12 +28,12 @@ const Home = ({}) => {
   }, [getPosts]);
 
   return (
-    <div className={styles.container}>
+    <>
       <Head></Head>
       <Header />
 
       <Posts />
-    </div>
+    </>
   );
 };
 export default Home;
