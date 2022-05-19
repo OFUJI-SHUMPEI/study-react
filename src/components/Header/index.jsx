@@ -5,6 +5,8 @@ export const Header = () => {
   const NAV_ITEMS = [
     { href: "/", label: "Index" },
     { href: "/about", label: "About" },
+    { href: "/users", label: "Users" },
+    { href: "/Comments", label: "Comments" },
   ];
 
   return (

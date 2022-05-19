@@ -18,10 +18,17 @@ export const usePost = () => {
     fetcher
   );
 
+  const { data: posts, error: postsError } = useSWR(
+    "https://jsonplaceholder.typicode.com/posts",
+    fetcher
+  );
+
   return {
+    posts,
     post,
     user,
-    error: postError || userError,
-    isLoading: !post && !postError && !user && !userError,
+    error: postError || userError || postsError,
+    isLoading:
+      !post && !postError && !user && !userError && !posts && !postsError,
   };
 };
