@@ -1,4 +1,5 @@
 import { usePost } from "../../hooks/usePost.jsx";
+import Link from "next/link";
 
 export const Post = () => {
   const { post, user, someComments, error, isLoading } = usePost();
@@ -18,7 +19,13 @@ export const Post = () => {
       <ol>
         {user?.name ? <div>Created By{user?.name}</div> : null}
         {someComments?.map((s) => {
-          return <li>{s.body}</li>;
+          return (
+            <li key={user.id}>
+              <Link href={`../../users/${post.id}`}>
+                <a>{s.body}</a>
+              </Link>
+            </li>
+          );
         })}
       </ol>
     </div>

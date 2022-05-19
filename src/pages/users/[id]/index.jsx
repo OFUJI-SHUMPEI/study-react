@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { usePost } from "../../../hooks/usePost";
-
+import Link from "next/link";
 const Userdata = ({}) => {
   const { someComments, userdata, error, isLoading } = usePost();
 
@@ -21,7 +21,13 @@ const Userdata = ({}) => {
       {userdata?.name ? <div>Created By{userdata?.name}</div> : null}
       <ol>
         {someComments?.map((s) => {
-          return <li>{s.body}</li>;
+          return (
+            <li>
+              <Link href={`../../comments/${s.id}`}>
+                <a>{s.body}</a>
+              </Link>
+            </li>
+          );
         })}
       </ol>
     </div>

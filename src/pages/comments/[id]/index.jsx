@@ -1,8 +1,9 @@
 import Head from "next/head";
 import { usePost } from "../../../hooks/usePost";
+import Link from "next/link";
 
 const Comment = ({}) => {
-  const { comment, user, error, isLoading } = usePost();
+  const { comment, userdata, error, isLoading } = usePost();
 
   if (isLoading) {
     return <div>ロード中です。</div>;
@@ -18,7 +19,14 @@ const Comment = ({}) => {
       <div>
         <h1>{comment?.name}</h1>
         <p>{comment?.body}</p>
-        {comment?.name ? <div>Created By{comment?.name}</div> : null}
+        {comment?.name ? (
+          <div>
+            Created By{" "}
+            <Link href={`../../users/${comment.postId}`}>
+              <a>{userdata?.name}</a>
+            </Link>
+          </div>
+        ) : null}
       </div>
     </div>
   );
