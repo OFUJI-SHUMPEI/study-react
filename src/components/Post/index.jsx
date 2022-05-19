@@ -4,7 +4,6 @@ export const Post = () => {
   const { post, user, error, isLoading } = usePost();
 
   if (isLoading) {
-    console.log(post);
     return <div>ロード中です。</div>;
   }
 

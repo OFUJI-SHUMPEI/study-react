@@ -23,10 +23,34 @@ export const usePost = () => {
     fetcher
   );
 
+  const { data: comments, error: commentsError } = useSWR(
+    "https://jsonplaceholder.typicode.com/comments",
+    fetcher
+  );
+
+  const { data: comment, error: commentError } = useSWR(
+    `https://jsonplaceholder.typicode.com/comments/${router.query.id}`,
+    fetcher
+  );
+
+  const { data: users, error: usersError } = useSWR(
+    "https://jsonplaceholder.typicode.com/users",
+    fetcher
+  );
+
+  const { data: userdata, error: userdataError } = useSWR(
+    `https://jsonplaceholder.typicode.com/users/${router.query.id}`,
+    fetcher
+  );
+
   return {
     posts,
+    users,
     post,
     user,
+    userdata,
+    comments,
+    comment,
     error: postError || userError || postsError,
     isLoading:
       !post && !postError && !user && !userError && !posts && !postsError,

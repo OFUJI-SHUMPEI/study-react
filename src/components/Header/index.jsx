@@ -6,7 +6,7 @@ export const Header = () => {
     { href: "/", label: "Index" },
     { href: "/about", label: "About" },
     { href: "/users", label: "Users" },
-    { href: "/Comments", label: "Comments" },
+    { href: "/comments", label: "Comments" },
   ];
 
   return (
