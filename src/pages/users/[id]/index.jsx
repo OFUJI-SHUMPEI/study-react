@@ -2,7 +2,7 @@ import Head from "next/head";
 import { usePost } from "../../../hooks/usePost";
 
 const Userdata = ({}) => {
-  const { userdata, error, isLoading } = usePost();
+  const { someComments, userdata, error, isLoading } = usePost();
 
   if (isLoading) {
     return <div>ロード中です。</div>;
@@ -15,11 +15,15 @@ const Userdata = ({}) => {
   return (
     <div>
       <Head></Head>
-      <div>
-        <h1>{userdata?.name}</h1>
-        <p>{userdata?.body}</p>
-        {userdata?.name ? <div>Created By{userdata?.name}</div> : null}
-      </div>
+
+      <h1>{userdata?.name}</h1>
+      <p>{userdata?.body}</p>
+      {userdata?.name ? <div>Created By{userdata?.name}</div> : null}
+      <ol>
+        {someComments?.map((s) => {
+          return <li>{s.body}</li>;
+        })}
+      </ol>
     </div>
   );
 };

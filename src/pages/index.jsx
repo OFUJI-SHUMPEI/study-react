@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Posts } from "../components/Posts/index.jsx";
-import { Header } from "../components/Header/index.jsx";
+
 import { useCallback, useEffect, useState } from "react";
 
 const Home = ({}) => {
@@ -30,7 +30,6 @@ const Home = ({}) => {
   return (
     <>
       <Head></Head>
-      <Header />
 
       <Posts />
     </>
