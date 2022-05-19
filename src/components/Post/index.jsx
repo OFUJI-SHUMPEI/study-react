@@ -1,7 +1,7 @@
 import { usePost } from "../../hooks/usePost.jsx";
 
 export const Post = () => {
-  const { post, user, error, isLoading } = usePost();
+  const { post, user, someComments, error, isLoading } = usePost();
 
   if (isLoading) {
     return <div>ロード中です。</div>;
@@ -15,7 +15,12 @@ export const Post = () => {
     <div>
       <h1>{post?.title}</h1>
       <p>{post?.body}</p>
-      {user?.name ? <div>Created By{user?.name}</div> : null}
+      <ol>
+        {user?.name ? <div>Created By{user?.name}</div> : null}
+        {someComments?.map((s) => {
+          return <li>{s.body}</li>;
+        })}
+      </ol>
     </div>
   );
 };

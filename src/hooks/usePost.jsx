@@ -43,6 +43,11 @@ export const usePost = () => {
     fetcher
   );
 
+  const { data: someComments, error: someCommentsError } = useSWR(
+    `https://jsonplaceholder.typicode.com/comments?postId=${router.query.id}`,
+    fetcher
+  );
+
   return {
     posts,
     users,
@@ -51,6 +56,7 @@ export const usePost = () => {
     userdata,
     comments,
     comment,
+    someComments,
     error: postError || userError || postsError,
     isLoading:
       !post && !postError && !user && !userError && !posts && !postsError,
