@@ -22,7 +22,7 @@ const Comment = ({}) => {
         {comment?.name ? (
           <div>
             Created By{" "}
-            <Link href={`../../users/${comment.postId}`}>
+            <Link href={`../../users/${comment?.postId}`}>
               <a>{userdata?.name}</a>
             </Link>
           </div>
