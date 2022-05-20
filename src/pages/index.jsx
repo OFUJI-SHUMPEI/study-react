@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Posts } from "../components/Posts/index.jsx";
-
 import { useCallback, useEffect, useState } from "react";
 
 const Home = ({}) => {
@@ -30,7 +29,7 @@ const Home = ({}) => {
   return (
     <>
       <Head></Head>
-
+      <div className="text-red-500">test</div>
       <Posts />
     </>
   );
