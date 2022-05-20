@@ -5,6 +5,7 @@ import { useCounter } from "../hooks/useCounter";
 import { useInputarray } from "../hooks/useInputarray";
 import { useBgLightBlue } from "../hooks/useBglightBlue";
 import { Layout } from "../components/Layout/index";
+import "tailwindcss/tailwind.css";
 
 const MyApp = ({ Component, pageProps }) => {
   const counter = useCounter();
