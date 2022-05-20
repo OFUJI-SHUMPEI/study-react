@@ -2,7 +2,7 @@ import Head from "next/head";
 import { usePost } from "../../../hooks/usePost";
 import Link from "next/link";
 
-const Comment = ({}) => {
+const Comment = () => {
   const { comment, userdata, error, isLoading } = usePost();
 
   if (isLoading) {

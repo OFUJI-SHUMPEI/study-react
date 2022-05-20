@@ -1,7 +1,26 @@
 import Head from "next/head";
 import { usePost } from "../../../hooks/usePost";
 import Link from "next/link";
-const Userdata = ({}) => {
+import { SWRConfig } from "swr";
+
+export const getServerSideProps = async (ctx) => {
+  const { id } = ctx.query;
+  const API = `https://jsonplaceholder.typicode.com/users/${id}`;
+  const user = await fetch(API);
+  const userData = await user.json();
+
+  return {
+    props: {
+      fallback: {
+        [API]: userData,
+      },
+    },
+  };
+};
+
+const Userdata = (props) => {
+  const { fallback } = props;
+
   const { someComments, userdata, error, isLoading } = usePost();
 
   if (isLoading) {
@@ -13,7 +32,7 @@ const Userdata = ({}) => {
   }
 
   return (
-    <div>
+    <SWRConfig value={{ fallback }}>
       <Head></Head>
 
       <h1>{userdata?.name}</h1>
@@ -22,7 +41,7 @@ const Userdata = ({}) => {
       <ol>
         {someComments?.map((s) => {
           return (
-            <li>
+            <li key={s.id}>
               <Link href={`../../comments/${s.id}`}>
                 <a>{s.body}</a>
               </Link>
@@ -30,7 +49,7 @@ const Userdata = ({}) => {
           );
         })}
       </ol>
-    </div>
+    </SWRConfig>
   );
 };
 export default Userdata;

@@ -6,6 +6,12 @@ import { useInputarray } from "../hooks/useInputarray";
 import { useBgLightBlue } from "../hooks/useBglightBlue";
 import { Layout } from "../components/Layout/index";
 import "tailwindcss/tailwind.css";
+import { SWRConfig } from "swr";
+
+const fetcher = async (...args) => {
+  const res = await fetch(...args);
+  return await res.json();
+};
 
 const MyApp = ({ Component, pageProps }) => {
   const counter = useCounter();
@@ -20,9 +26,11 @@ const MyApp = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <Layout>
-        <Component foo={123} {...pageProps} {...counter} {...inputArray} />
-      </Layout>
+      <SWRConfig value={{ fetcher }}>
+        <Layout>
+          <Component foo={123} {...pageProps} {...counter} {...inputArray} />
+        </Layout>
+      </SWRConfig>
     </div>
   );
 };
