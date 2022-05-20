@@ -37,13 +37,15 @@ const Userdata = (props) => {
 
       <h1>{userdata?.name}</h1>
       <p>{userdata?.body}</p>
-      {userdata?.name ? <div>Created By{userdata?.name}</div> : null}
+
+      <h3 className="text-right">投稿</h3>
+
       <ol>
         {someComments?.map((s) => {
           return (
-            <li key={s.id}>
+            <li className="my-2" key={s.id}>
               <Link href={`../../comments/${s.id}`}>
-                <a>{s.body}</a>
+                <a className="font-bold">{s.body}</a>
               </Link>
             </li>
           );

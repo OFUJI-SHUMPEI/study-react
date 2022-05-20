@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import useSWR from "swr";
+import useSWR from "swr/immutable";
 
 const fetcher = async (...args) => {
   const res = await fetch(...args);
