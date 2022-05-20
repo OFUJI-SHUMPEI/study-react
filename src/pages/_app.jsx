@@ -16,7 +16,6 @@ const fetcher = async (...args) => {
 const MyApp = ({ Component, pageProps }) => {
   const counter = useCounter();
   const inputArray = useInputarray();
-  useBgLightBlue();
 
   return (
     <div>
