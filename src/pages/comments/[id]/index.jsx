@@ -2,7 +2,6 @@ import Head from "next/head";
 import { usePost } from "../../../hooks/usePost";
 import Link from "next/link";
 import { SWRConfig } from "swr";
-import { comment } from "postcss";
 import { API_URL } from "../../../utility/const";
 
 export const getStaticPaths = async () => {
@@ -25,12 +24,12 @@ export const getStaticProps = async (ctx) => {
   const COMMENT = await fetch(COMMENT_API);
   const COMMENTData = await COMMENT.json();
 
-  if (!comment.ok) {
+  /*if (!COMMENTData.ok) {
     return {
       notFound: true,
       revalidate: 1,
     };
-  }
+  }*/
 
   return {
     props: {
@@ -44,8 +43,7 @@ export const getStaticProps = async (ctx) => {
 
 const Comment = (props) => {
   const { fallback } = props;
-  const { comment, userdata, error, isLoading } = usePost();
-  const router = useRouter();
+  const { comment, userdata } = usePost();
 
   return (
     <div>

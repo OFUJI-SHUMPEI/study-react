@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Posts } from "../components/Posts/index.jsx";
+import { PostList } from "../components/Post/Postlist.jsx";
 import { useCallback, useEffect, useState } from "react";
 import { API_URL } from "../utility/const.js";
 const Home = ({}) => {
@@ -30,7 +30,7 @@ const Home = ({}) => {
     <>
       <Head></Head>
       <div className="text-red-500">test</div>
-      <Posts />
+      <PostList />
     </>
   );
 };
