@@ -2,16 +2,23 @@ import Head from "next/head";
 import { usePost } from "../../../hooks/usePost";
 import Link from "next/link";
 
+export const getServerSideProps = async (ctx) => {
+  const { id } = ctx.query;
+  const COMMENTS_API = `https://jsonplaceholder.typicode.com/comments`;
+  const COMMENTS = await fetch(COMMENTS_API);
+  const COMMENTSData = await user.json();
+
+  return {
+    props: {
+      fallback: {
+        [API]: COMMENTSData,
+      },
+    },
+  };
+};
+
 const Comment = () => {
   const { comment, userdata, error, isLoading } = usePost();
-
-  if (isLoading) {
-    return <div>ロード中です。</div>;
-  }
-
-  if (error) {
-    return <div>{error.message}</div>;
-  }
 
   return (
     <div>
