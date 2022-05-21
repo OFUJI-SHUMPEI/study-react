@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Posts } from "../components/Posts/index.jsx";
 import { useCallback, useEffect, useState } from "react";
-
+import { API_URL } from "../utility/const.js";
 const Home = ({}) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -9,7 +9,7 @@ const Home = ({}) => {
 
   const getPosts = useCallback(async () => {
     try {
-      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const res = await fetch(`${API_URL}/posts`);
       if (!res.ok) {
         throw new Error("情報の取得に失敗しました。");
       }

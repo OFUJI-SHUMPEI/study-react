@@ -2,10 +2,11 @@ import Head from "next/head";
 import { usePost } from "../../../hooks/usePost";
 import Link from "next/link";
 import { SWRConfig } from "swr";
+import { API_URL } from "../../../utility/const";
 
 export const getServerSideProps = async (ctx) => {
   const { id } = ctx.query;
-  const API = `https://jsonplaceholder.typicode.com/users/${id}`;
+  const API = `${API_URL}/users/${id}`;
   const user = await fetch(API);
   const userData = await user.json();
 

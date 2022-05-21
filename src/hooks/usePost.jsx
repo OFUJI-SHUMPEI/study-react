@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import useSWR from "swr/immutable";
-
+import { API_URL } from "../utility/const";
 const fetcher = async (...args) => {
   const res = await fetch(...args);
   return await res.json();
@@ -9,51 +9,47 @@ const fetcher = async (...args) => {
 export const usePost = () => {
   const router = useRouter();
   const { data: post, error: postError } = useSWR(
-    router.query.id
-      ? `https://jsonplaceholder.typicode.com/posts/${router.query.id}`
-      : null,
+    router.query.id ? `${API_URL}/posts/${router.query.id}` : null,
     fetcher
   );
 
   const { data: user, error: userError } = useSWR(
-    post?.userId
-      ? `https://jsonplaceholder.typicode.com/users/${post.userId}`
-      : null,
+    post?.userId ? `${API_URL}/users/${post.userId}` : null,
     fetcher
   );
 
   const { data: posts, error: postsError } = useSWR(
-    "https://jsonplaceholder.typicode.com/posts",
+    `${API_URL}/posts`,
     fetcher
   );
 
   const { data: comments, error: commentsError } = useSWR(
-    "https://jsonplaceholder.typicode.com/comments",
+    `${API_URL}/comments`,
     fetcher
   );
 
   const { data: comment, error: commentError } = useSWR(
-    `https://jsonplaceholder.typicode.com/comments/${router.query.id}`,
+    `${API_URL}/comments/${router.query.id}`,
     fetcher
   );
 
   const { data: users, error: usersError } = useSWR(
-    "https://jsonplaceholder.typicode.com/users",
+    `${API_URL}/users`,
     fetcher
   );
 
   const { data: userdata, error: userdataError } = useSWR(
-    `https://jsonplaceholder.typicode.com/users/${router.query.id}`,
+    `${API_URL}/users/${router.query.id}`,
     fetcher
   );
 
   const { data: someComments, error: someCommentsError } = useSWR(
-    `https://jsonplaceholder.typicode.com/comments?postId=${router.query.id}`,
+    `${API_URL}/comments?postId=${router.query.id}`,
     fetcher
   );
 
   const { data: usersArticles, error: usersArticlesError } = useSWR(
-    `https://jsonplaceholder.typicode.com/comments?postId=${router.query.id}`,
+    `${API_URL}/comments?postId=${router.query.id}`,
     fetcher
   );
 

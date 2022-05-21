@@ -1,9 +1,10 @@
 import { usePost } from "../../hooks/usePost.jsx";
 import Link from "next/link";
+import { API_URL } from "../../utility/const.js";
 
 export const getServerSideProps = async (ctx) => {
   const { id } = ctx.query;
-  const API = `https://jsonplaceholder.typicode.com/users/${id}`;
+  const API = `${API_URL}/users/${id}`;
   const user = await fetch(API);
   const userData = await user.json();
 

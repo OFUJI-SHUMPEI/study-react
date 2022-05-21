@@ -1,9 +1,9 @@
 import { usePost } from "../../hooks/usePost";
 import Link from "next/link";
 import { SWRConfig } from "swr";
-
+import { API_URL } from "../../utility/const";
 export const getStaticProps = async (ctx) => {
-  const COMMENTS_API = `https://jsonplaceholder.typicode.com/comments`;
+  const COMMENTS_API = `${API_URL}/comments`;
   const COMMENTS = await fetch(COMMENTS_API);
   const COMMENTSData = await COMMENTS.json();
 

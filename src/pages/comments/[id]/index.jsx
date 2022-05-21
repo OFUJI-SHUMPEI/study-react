@@ -3,9 +3,10 @@ import { usePost } from "../../../hooks/usePost";
 import Link from "next/link";
 import { SWRConfig } from "swr";
 import { comment } from "postcss";
+import { API_URL } from "../../../utility/const";
 
 export const getStaticPaths = async () => {
-  const COMMENTS_API = `https://jsonplaceholder.typicode.com/comments?limit=10`;
+  const COMMENTS_API = `${API_URL}/comments?_limit=10`;
   const COMMENTS = await fetch(COMMENTS_API);
   const COMMENTSData = await COMMENTS.json();
   const paths = COMMENTSData.map((com) => ({
@@ -20,7 +21,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (ctx) => {
   const { id } = ctx.params;
-  const COMMENT_API = `https://jsonplaceholder.typicode.com/comment${id}`;
+  const COMMENT_API = `${API_URL}/comment${id}`;
   const COMMENT = await fetch(COMMENT_API);
   const COMMENTData = await COMMENT.json();
 
