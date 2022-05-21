@@ -31,23 +31,22 @@ export const Post = (props) => {
   }
 
   return (
-    <div>
+    <SWRConfig value={{ fallback }}>
       <h1>{post?.title}</h1>
       <p>{post?.body}</p>
-      <SWRConfig value={{ fallback }}>
-        <ol>
-          {user?.name ? <div>Created By{user?.name}</div> : null}
-          {someComments?.map((s) => {
-            return (
-              <li key={s?.id}>
-                <Link href={`../../users/${post?.id}`}>
-                  <a>{s?.body}</a>
-                </Link>
-              </li>
-            );
-          })}
-        </ol>
-      </SWRConfig>
-    </div>
+
+      <ol>
+        {user?.name ? <div>Created By{user?.name}</div> : null}
+        {someComments?.map((s) => {
+          return (
+            <li key={s?.id}>
+              <Link href={`../../users/${post?.id}`}>
+                <a>{s?.body}</a>
+              </Link>
+            </li>
+          );
+        })}
+      </ol>
+    </SWRConfig>
   );
 };

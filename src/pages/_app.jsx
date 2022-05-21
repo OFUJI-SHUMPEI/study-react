@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Header } from "../components/Header/index.jsx";
 
 import { useBgLightBlue } from "../hooks/usebglightblue";
-import { Layout } from "../components/Layout/index";
+import { Layout } from "../components/APP_Layouts/Layout/index";
 import "tailwindcss/tailwind.css";
 import { SWRConfig } from "swr";
 
