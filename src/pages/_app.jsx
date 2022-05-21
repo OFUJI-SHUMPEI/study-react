@@ -1,8 +1,6 @@
-//import "../styles/globals.css";
 import Head from "next/head";
 import { Header } from "../components/Header/index.jsx";
-import { useCounter } from "../hooks/useCounter";
-import { useInputarray } from "../hooks/useInputarray";
+
 import { useBgLightBlue } from "../hooks/usebglightblue";
 import { Layout } from "../components/Layout/index";
 import "tailwindcss/tailwind.css";
@@ -14,8 +12,6 @@ const fetcher = async (...args) => {
 };
 
 const MyApp = ({ Component, pageProps }) => {
-  const counter = useCounter();
-  const inputArray = useInputarray();
   useBgLightBlue();
   return (
     <div>
@@ -27,7 +23,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Header />
       <SWRConfig value={{ fetcher }}>
         <Layout>
-          <Component foo={123} {...pageProps} {...counter} {...inputArray} />
+          <Component {...pageProps} />
         </Layout>
       </SWRConfig>
     </div>

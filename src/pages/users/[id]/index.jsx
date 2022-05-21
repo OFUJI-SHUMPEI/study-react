@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { PostsByUserId } from "../../../components/Post/PostsByUserId";
+import { PostsByUserId } from "../../../components/User/PostsByUserId";
 
 const Userdata = () => {
   return (
